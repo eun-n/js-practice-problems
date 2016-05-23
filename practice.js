@@ -244,3 +244,24 @@ console.log(daysToBirthday(4, 21));
 // }
 
 // console.log(mul(2)(3)(4));
+
+
+
+//Flatten an array
+
+
+var flatten = function(arr){
+    //flatten the array here
+    for(i=0; i<arr.length; i++) {
+      if(Array.isArray(arr[i])) {
+       arr.splice(i, 1, arr[i][0], arr[i][1]);
+      }
+    }
+
+    return arr;
+};
+
+var myArr = [1, 2, [3, 4], [5, 6], 7];
+
+console.log(flatten(myArr));
+//output: [1, 2, 3, 4, 5, 6, 7]
