@@ -265,3 +265,71 @@ var myArr = [1, 2, [3, 4], [5, 6], 7];
 
 console.log(flatten(myArr));
 //output: [1, 2, 3, 4, 5, 6, 7]
+
+
+// search for the index n inside of list
+// return the index of n
+// return -1 if it doesn't exist
+
+// set up variables min, max and guess to keep track of the range of indexes you're currently searching through.
+// set guess equal to (min + max / 2) and round it
+// read the value of the array at the index of guess
+// if the value read is higher than n then adjust max = guess - 1
+// if the value read is lower than n then adjust min = guess + 1
+// repeat steps 2 through 5 until n is found.
+// return guess as the index of n
+// return -1 if min, max, and guess converge on an index and n is not in the list.
+var list = [7, 10, 20, 30, 40, 50, 60]
+binarySearch(list, 15); // returns -1
+
+function binarySearch(arr, search) {
+  var min = 0;
+  var max = arr.length - 1;
+  var index;
+  var elem;
+
+  while (min <= max) {
+    index = Math.floor((min + max) / 2);
+    elem = arr[index];
+
+    if (elem < search) {
+      min = index + 1;
+    }
+    else if (elem > search) {
+      max = index - 1;
+    }
+    else {
+      return index;
+    }
+  }
+
+  return -1;
+}
+
+//find the largest palindrome that is a product of two 3-digit numbers
+function reversed(s){
+    var b = s.toString().split("").reverse().join("");
+  if(b == s) {
+    return true;
+  }else {
+    return false;
+  }
+}
+function product() {
+  var pal = 0;
+  var d = 0;
+  var e = 0;
+  for (var i= 999; i>99; i--) {
+    for(var j=999; j>99; j--) {
+      var c = i*j;
+      if(reversed(c) === true && c>pal) {
+        console.log(c);
+        pal = c;
+        d = i;
+        e=j;
+      }
+    }
+  } console.log(pal + " product of " + d + " and " + e);
+}
+
+product();
