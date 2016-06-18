@@ -271,6 +271,8 @@ console.log(flatten(myArr));
 // return the index of n
 // return -1 if it doesn't exist
 
+//start a for loop from the end of the array
+
 // set up variables min, max and guess to keep track of the range of indexes you're currently searching through.
 // set guess equal to (min + max / 2) and round it
 // read the value of the array at the index of guess
@@ -341,3 +343,39 @@ product();
 
 // What is the largest n-digit pandigital prime that exists?
 
+
+
+//move all zeroes to end of the array
+var nums = [0, 1, 0, 2, 0];
+function zeroa(arr) {
+  for(var i=arr.length-1; i>-1; i--) {
+    if(arr[i]===0) {
+      arr.splice(i, 1);
+      arr.push(0);
+    }
+  }return arr;
+}
+
+console.log(zeroa(nums));
+
+
+//pascal's triangle
+function numRows (n) {
+  var arr = [];
+  
+  for (var i = 0; i < n; i++) { 
+    arr[i] = new Array(i);
+    
+    for (var j = 0; j < i+1; j++) {            
+      if (j === 0 || j === i) {
+        arr[i][j] = 1;
+      } else if (j < i) {
+        arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
+      } 
+    }
+  }
+  
+  return arr;
+}
+
+console.log(numRows(6));
