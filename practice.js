@@ -518,3 +518,34 @@ function isUnique(str) {
 }
 
 console.log(isUnique('abcdefghijklmnopqrstuvwxyz'));
+
+//zero out a matrix by turning all rows and column values to 0 if there is an element of 0
+
+function findZ (arr) {
+  var val = [[],[]];
+  for(var i = 0; i<arr.length; i++) {
+    for(var j=0; j<arr[i].length; j++) {
+      if(arr[i][j]===0) {
+        if(val[0].indexOf(i) === -1) {
+          val[0].push(i);
+        }if(val[1].indexOf(j) ===-1) {
+          val[1].push(j);
+        }
+      }
+    }
+  }return val;
+}
+
+function zeroOut(values, matrix) {
+  for(var k=0; k<matrix.length; k++) {
+    for(var l=0; l<matrix[k].length; l++) {
+      if(values[0].indexOf(k) != -1) {
+        matrix[k][l] = 0;
+      }if(values[1].indexOf(l) != -1) {
+        matrix[k][l] = 0;
+      }
+    }
+  }return matrix;
+}
+
+console.log(zeroOut([[1],[0,3]],[[1, 0, 2, 3, 4], [1, 2, 3, 4, 5], [1, 2, 3, 0, 0]]));
