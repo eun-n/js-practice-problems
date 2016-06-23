@@ -379,3 +379,6 @@ function numRows (n) {
 }
 
 console.log(numRows(6));
+
+
+//applications, networking, phone screens, in-person interviews, and link to job tracker
