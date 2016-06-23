@@ -424,3 +424,82 @@ function nextGuess(numCorrect, guess, allWords) {
 }
 
 allWords = ['WASTING', 'WANTING', 'WARNING', 'SOLDIER', 'BICYCLE'];
+
+//write a function to tell if two words are one letter or replacement away from each other
+
+function oneAway(a, b) {
+  var check = 0;
+  w1 = a.split('');
+  w2= b.split('');
+  if(w1.length === w2.length) {
+    for(var i=0; i<w1.length; i++) {
+      if(w1[i] != w2[i]) {
+        w1[i] = w2[i];
+        check = check + 1;
+      }
+    } if(check > 1) {
+      return false;
+    } else {
+      return true;
+    }
+  } else if (w1.length > w2.length) {
+    for(var j=0; j<w1.length; j++) {
+      if(w1[j] != w2[j]) {
+        w2.splice(j, 0, w1[j]);
+        check = check + 1;
+      }
+    } if(check > 1) {
+      return false;
+    } else {
+      return true;
+    }
+  } else if(w2.length > w1.length) {
+    for (var k=0; k<w2.length; k++) {
+      if(w1[k] != w2[k]) {
+        w1.splice(k, 0, w2[k]);
+        check = check + 1;
+      }
+    } if(check > 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+console.log(oneAway('pale', 'pal'));
+
+//compress string function
+function compress(str) {
+  var com = '';
+  var count = 1;
+  com = com + str[0];
+  for(var i=1; i<str.length; i++) {
+    if(i === str.length-1) {
+      if(str[i] === str[i-1]) {
+        count++;
+        com = com + count;
+      }else if(str[i] != str[i-1]) {
+        com = com+count;
+        com = com + str[i] + 1;
+      }
+    } else if(str[i] === str[i-1]) {
+      count++;
+    } else if (str[i] != str[i-1]) {
+      com = com + count;
+      com = com + str[i];
+      count = 1;
+    }
+  } return com;
+}
+
+function compressString(word) {
+  var c = compress(word);
+  if(c.length >= word.length) {
+    return word;
+  } else {
+    return c;
+  }
+}
+
+console.log(compressString('aabbbaaaabbbbcccccc'));
