@@ -536,7 +536,9 @@ function findZ (arr) {
   }return val;
 }
 
-function zeroOut(values, matrix) {
+function zeroOut(matrix) {
+  var values = findZ(matrix);
+  console.log(values);
   for(var k=0; k<matrix.length; k++) {
     for(var l=0; l<matrix[k].length; l++) {
       if(values[0].indexOf(k) != -1) {
@@ -548,4 +550,4 @@ function zeroOut(values, matrix) {
   }return matrix;
 }
 
-console.log(zeroOut([[1],[0,3]],[[1, 0, 2, 3, 4], [1, 2, 3, 4, 5], [1, 2, 3, 0, 0]]));
+console.log(zeroOut([[1, 0, 2, 3, 4], [1, 2, 3, 4, 5], [1, 2, 3, 0, 0]]));
