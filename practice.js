@@ -551,3 +551,38 @@ function zeroOut(matrix) {
 }
 
 console.log(zeroOut([[1, 0, 2, 3, 4], [1, 2, 3, 4, 5], [1, 2, 3, 0, 0]]));
+
+
+//singly linked list
+//first set up the list with a function
+
+function linkedList() {
+  this.head = null;
+}
+
+//then use prototypes to create nodes
+
+linkedList.prototype.push = function(val){
+    var node = {
+       value: val,
+       next: null
+    }
+    if(!this.head){
+      this.head = node;      
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
+     
+
+//make a new sample list
+
+var ss = new linkedList();
+ss.push(2);
+ss.push(4);
+ss.push(10);
