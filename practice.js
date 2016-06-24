@@ -586,3 +586,28 @@ var ss = new linkedList();
 ss.push(2);
 ss.push(4);
 ss.push(10);
+
+
+//string rotation check
+function stringCheck(w1, w2) {
+  var arr1 = w1.split('');
+   var arr2 = w2.split('');
+  if(w1.length != w2.length) {
+    return false;
+  }else {
+    var test = 0;
+    for(var i=0; i<w1.length; i++) {
+      if(arr1[i] != arr2[i]) {
+        var temp = arr1.pop();
+        arr1.unshift(temp);
+        console.log(arr1);
+        i=0;
+        test++;
+      } if(test> arr1.length+1) {
+        return false;
+      }
+    }return true;
+  }
+}
+
+console.log(stringCheck('test', 'stte'));
