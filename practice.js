@@ -611,3 +611,15 @@ function stringCheck(w1, w2) {
 }
 
 console.log(stringCheck('test', 'stte'));
+
+
+//deep copy function test
+var original = {name: 'test', age: 5};
+
+function deepCopy(a) {
+  var copy = JSON.parse(JSON.stringify(a));
+  copy.name = 'blah';
+  return copy;
+}
+
+console.log(deepCopy(original), original);
