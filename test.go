@@ -5,14 +5,6 @@ import "fmt"
 func main() {
 	fmt.Println("it's over 9000!")
 
-
-	fmt.Println("true && false = ", true && false)
-	//for loop
-	i := 1
-	for i<=10 {
-		fmt.Println(i)
-		i++ //i=i+1
-	}
 	//variables are statically typed so they can't change type once they're defined
 	//uint8 : unsigned 8-bit integers (0-255)
 	//uint16 : unsigned 16-bit integers (0-65535)
@@ -59,8 +51,185 @@ func main() {
 	//how to print floats with up to 3 decimals
 	fmt.Printf("%.3f \n", pi)
 
+	//%b = binary format
+	fmt.Printf("%d \n", 100)
+	//%d = integer
+	//%c = character with character code
+	//%x =hex code
+	//%e =scientific notation
+
+		fmt.Println("true && false = ", true && false)
+	//for loop
+	i := 1
+	for i<=10 {
+		fmt.Println(i)
+		i++ //i=i+1
+	}
+
+	//another for loop
+	for j := 0; j<5; j++ {
+		fmt.Println(j)
+	}
+
+	yourAge := 18
+	if yourAge >= 16 {
+		fmt.Println("you can drive")
+	} else {
+		fmt.Println("you can't drive")
+	} else if yourAge >= 18 {
+		fmt.Println("you can vote")
+	}
+
+	//switch statement
+	switch yourAge {
+		case 16 : fmt.Println("go drive")
+		case 18 : fmt.Println("go vote")
+		default : fmt.Println(" go have fun")
+	}
+
+	//arrays
+	//array of 5 numbers
+	var favNums[5] float 64
+	favNums[0] = 12
+	favNums[1] = 2
+	favNums[2] = 5
+	favNums[3] = 19
+	favNums[4] = 89
+
+	fmt.Println(favNums[3])
+
+	//another way to initialize an array
+	favNums1 := [5]float64 {1, 2, 3, 4, 5}
+
+	//iterate throught the array
+	for i, value := range favNums1 {
+		//prints the value and the array index
+		fmt.Println(value, i)
+	}
+	numSlice := [] int {5, 4, 3, 2, 1}
+
+	//print out 3rd index to the 5th (not include the 5th)
+	numSlice2 := numSlice[3:5]
+
+	//print out first index to the 3rd
+	numSlice2 := numSlice[:3]
+
+	//print out 3rd index to the end
+	numSlice2 := numSlice[3:]
+
+	//will not have a defined set of values when you start (default value of 0 for the first 5, 10 is the max size)
+	numSlice3 := make([]int, 5, 10)
+
+	//copy over the values of the first numSlice into numSlice3
+	copy(numSlice3, numSlice)
+
+	//add the values 0 and -1 to the end of the array
+	numSlice3 = append(numSlice3, 0, -1)
+
+
+
+	//MAPS
+
+	//map with presidents with their age as president
+	presAge := make(map[string] int)
+
+	presAge["TheodoreRoosevelt"] = 42
+
+	fmt.Println(len(presAge))
+
+	presAge["John F. Kennedy"] = 43
+	fmt.Println(len(presAge))
+
+	//delete an input from the map using the key
+	delete(presAge, "John F. Kennedy")
 
 }
+
+//function to return the sum of an array
+func main() {
+	listNums := []float64{1,2,3,4,5}
+
+	fmt.Println("sum : ", addThemUp(listNums))
+}
+
+func addThemUp(numbers []float64) float64{
+	sum := 0.0
+
+	for _, val := range numbers {
+		sum += val
+	}
+
+	return sum
+}
+
+//function to print out two values **SUPER COOL
+func main() {
+	num1, num2 := next2Values(5)
+	fmt.Println(num1, num2)
+}
+
+func next2Values(number int) (int, int) {
+	return number +1, number+2
+}
+
+//send an undefined number of values to a function
+func main() {
+	fmt.Println(subtractThem(1,2,3,4,5))
+}
+func subtractThem(args ...int) int {
+	finalValue := 0
+	for _, value := range args {
+		finalValue -= value
+	}
+	return finalValue
+}
+
+//create a function inside of a function
+func main() {
+	num3 := 3
+	doubleNum := func () int {
+		num3 *= 2
+
+		return num3
+	}
+	fmt.Println(doubleNum())
+}
+
+//recursion time!!
+func main() {
+	fmt.Println(factorial(3))
+}
+func factorial (num int) int {
+	if num == 0 {
+		return 1
+	}
+	return num * factorial(num-1)
+}
+
+//defer executes the following function after completing the main function
+func main() {
+	defer printTwo()
+	printOne()
+}
+
+func printOne() {fmt.Println(1)}
+func printTwo() {fmt.Println(2)}
+
+//more defer stuff, perform division in a safe way
+func main() {
+	fmt.Println(safeDiv(3,0))
+	fmt.Println(safeDiv(3,2))
+}
+func safeDiv(num1, num2 int) int {
+	defer func() {
+		fmt.Println(recover())
+		//recover catches if an error would occur
+	}()
+
+	solution := num1 / num2
+	return solution
+}
+
 
 //http handler
 
