@@ -215,7 +215,7 @@ func main() {
 func printOne() {fmt.Println(1)}
 func printTwo() {fmt.Println(2)}
 
-//more defer stuff, perform division in a safe way
+//more defer stuff, perform division in a safe way so it will skip over the problematic function
 func main() {
 	fmt.Println(safeDiv(3,0))
 	fmt.Println(safeDiv(3,2))
@@ -228,6 +228,33 @@ func safeDiv(num1, num2 int) int {
 
 	solution := num1 / num2
 	return solution
+}
+
+//PANIC
+func main() {
+	demPanic()
+}
+
+func demPanic() {
+	defer func() {
+		fmt.Println(recover())
+	}()
+	panic("PANIC")
+}
+
+//how pointers work inside of GO
+//use a pointer to be able to change the value of a variable
+func main () {
+	x := 0
+	//&x is passing the reference to x
+	changeXValNow(&x)
+	fmt.Println("x = ", x)
+
+}
+
+//adding a * allows you to change the value at the memory address
+func changeXValNow(x  *int) {
+	*x=2
 }
 
 
