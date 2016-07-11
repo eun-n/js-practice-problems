@@ -243,19 +243,31 @@ func demPanic() {
 }
 
 //how pointers work inside of GO
-//use a pointer to be able to change the value of a variable
-func main () {
-	x := 0
-	//&x is passing the reference to x
-	changeXValNow(&x)
-	fmt.Println("x = ", x)
+	//use a pointer to be able to change the value of a variable
+	func main () {
+		x := 0
+		//&x is passing the reference to x
+		changeXValNow(&x)
+		fmt.Println("x = ", x)
 
-}
+	}
 
-//adding a * allows you to change the value at the memory address
-func changeXValNow(x  *int) {
-	*x=2
-}
+	//adding a * allows you to change the value at the memory address
+	func changeXValNow(x  *int) {
+		*x=2
+	}
+
+//another example with pointers
+	func main() {
+		yPtr := new(int)
+		changeYValNow(yPtr)
+
+		fmt.Println("y = ", *yPtr)
+	}
+
+	func changeYValNow(yPtr *int) {
+		*yPtr = 100
+	}
 
 
 //http handler
