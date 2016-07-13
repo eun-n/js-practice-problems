@@ -339,6 +339,21 @@ func demPanic() {
 		fmt.Println(strings.Count(sampString, "l"))
 		//replace letter, replacement letter, the first n number of letters to be replaced (first 3 l's will be replaced with x)
 		fmt.Println(strings.Replace(sampString, "l", "x", 3))
+		//if you use a number less than 0, it will replace all occurrences
+	}
+
+//ALWAYS GET RID OF IMPORTS YOU ARE NOT USING OR ELSE YOU WILL GET AN ERROR
+	import ("fmt"
+	"strings"
+	"sort")
+	func main() {
+		csvString :="1,2,3,4,5,6"
+		fmt.Println(strings.Split(csvString, ","))
+		listOfLetters := []string{"c", "a", "b"}
+		sort.Strings(listOfLetters)
+		fmt.Println("Letters: ", listOfLetters)
+		listOfNums := strings.Join([]string{"3", "2", "1"}, ", ")
+		fmt.Println(listOfNums)
 	}
 
 //http handler
