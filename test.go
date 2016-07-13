@@ -269,6 +269,77 @@ func demPanic() {
 		*yPtr = 100
 	}
 
+//structs for datatypes
+	func main() {
+		rect1 := Rectangle{leftX: 0, topY: 50, height: 10, width: 10}
+		// another way to write the above is to write: 
+		// rect1 := Rectangle {0, 50, 10, 10}
+		fmt.Println("rectange is", rect1.width, "wide")
+		fmt.Println("rectangle area is", rect1.area)
+	}
+
+	type Rectangle struct {
+		leftX float64
+		topY float64
+		height float64
+		width float64
+	}
+
+	func (rect *Rectangle) area() float64{
+		return rect.width * rect.height
+	}
+
+
+//creating interfaces and polymorphism inside of go
+	import "math"
+
+	func main() {
+		rect := Rectangle{20, 50}
+		circ := Circle{4}
+
+		fmt.Println("rectangle area =", getArea(rect))
+		fmt.Println("circle area =", getArea(circ))
+	}
+
+	type Shape interface {
+		area() float64
+	}
+	type Rectangle struct {
+		height float64
+		width float64
+	}
+
+	func (rect *Rectangle) area() float64{
+		return rect.width * rect.height
+	}
+
+	type Circle struct {
+		radius float64
+	}
+
+	func (c Circle) area() float64 {
+		return math.Pi * math.Pow(c.radius, 2)
+	}
+
+	func getArea(shape Shape) float64 {
+		return shape.area
+	}
+
+
+//string functions and more stuff
+	import("fmt"
+	"strings"
+	)
+	func main () {
+		sampString := "Hello World"
+
+		//check to see if a string is inside of it using strings
+		fmt.Println(strings.Contains(sampString, "lo"))
+		fmt.Println(strings.Index(sampString, "lo"))
+		fmt.Println(strings.Count(sampString, "l"))
+		//replace letter, replacement letter, the first n number of letters to be replaced (first 3 l's will be replaced with x)
+		fmt.Println(strings.Replace(sampString, "l", "x", 3))
+	}
 
 //http handler
 
