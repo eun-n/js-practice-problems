@@ -506,16 +506,29 @@ console.log(compressString('aabbbaaaabbbbcccccc'));
 
 
 //function to check if a string has all unique letters 
+// function isUnique(str) {
+//   var check = '';
+//   for(var i=0; i<str.length; i++) {
+//     if(check.indexOf(str[i]) != -1) {
+//       return false;
+//     } else {
+//       check = check + str[i];
+//     }
+//   }return true;
+// }
+
 function isUnique(str) {
-  var check = '';
-  for(var i=0; i<str.length; i++) {
-    if(check.indexOf(str[i]) != -1) {
+  var letter = new Object();
+  for (var i=0; i<str.length; i++) {
+    if(letter[str[i]]) {
       return false;
-    } else {
-      check = check + str[i];
+    }else {
+      letter[str[i]] = true;
     }
   }return true;
 }
+
+console.log(isUnique("string"));
 
 console.log(isUnique('abcdefghijklmnopqrstuvwxyz'));
 
